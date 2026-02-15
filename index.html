@@ -1,0 +1,99 @@
+<!DOCTYPE html><html>
+<head>
+<title>For You ❤️</title><style>
+body {
+    margin: 0;
+    font-family: Arial;
+    text-align: center;
+    overflow: hidden;
+    background: linear-gradient(45deg,#ff758c,#ff7eb3,#ffb199);
+    color: white;
+}
+
+.container {
+    margin-top: 180px;
+}
+
+h1 {
+    font-size: 50px;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px white; }
+    to { text-shadow: 0 0 40px red; }
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 40px;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.yes {
+    background: #ff4d6d;
+    color: white;
+}
+
+.no {
+    background: white;
+    color: black;
+    position: absolute;
+}
+
+/* hearts */
+.heart {
+    position: absolute;
+    font-size: 25px;
+    color: red;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); }
+    100% { transform: translateY(-10vh); }
+}
+</style></head><body><div class="container" id="page1">
+    <h1>Hey 😊</h1>
+    <p>I want to ask you something...</p>
+    <button class="yes" onclick="next()">Click Here 💌</button>
+</div><div class="container" id="page2" style="display:none;">
+    <h1>You Make Me Very Happy ❤️</h1>
+    <p>Will you always stay with me?</p>
+    <button class="yes" onclick="final()">YES 💖</button>
+    <button class="no" onmouseover="move()">NO 😜</button>
+</div><div class="container" id="page3" style="display:none;">
+    <h1>❤️ I LOVE YOU ❤️</h1>
+    <p>You are my favourite person forever 💕</p>
+</div><script>
+function next() {
+    document.getElementById("page1").style.display="none";
+    document.getElementById("page2").style.display="block";
+}
+
+function final() {
+    document.getElementById("page2").style.display="none";
+    document.getElementById("page3").style.display="block";
+}
+
+function move() {
+    const btn = document.querySelector(".no");
+    btn.style.top = Math.random()*80 + "vh";
+    btn.style.left = Math.random()*80 + "vw";
+}
+
+/* floating hearts */
+function heart() {
+    let h = document.createElement("div");
+    h.className="heart";
+    h.innerHTML="❤️";
+    h.style.left=Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),5000);
+}
+setInterval(heart,300);
+</script></body>
+</html>
